@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Love Calculator</title>
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+	<style>
+		header{
+			width: 100%;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%,-50%);
+
+		}
+
+	</style>
+</head>
+<body background="img2.jpg">
+	
+	<header>
+		<!-- <h1 style="font-size: 35px;"  class="text-center text-white"> Inspired By Valak and Vava,<br>The true love</h1> -->
+		<div class="card w-50 m-auto text-center">
+  		<div class="card-header bg-danger text-white">Love Calculator</div>
+  		<div class="card-body">
+  			<!-- <form class="form-inline w-75 m-auto"> -->
+  			<form class="w-50 m-auto">
+  				<div class="form-group">
+  					<input type="text" name="" class="form-control text-center" placeholder="Your Name" id="yname">
+  				</div>
+  				<!-- <div><span class="pl-4 pr-4">+</span></div> -->
+  				<p>+</p>
+  				<div class="form-group">
+  					<input type="text" name="" class="form-control text-center" placeholder="Lover Name" id="lname">
+  				</div>
+  			</form>
+  			<br>
+  			<div class="w-75 m-auto">
+  				<button class="btn btn-success w-50" onclick="checklove()" id="bbtn">Click</button>
+  				
+  			</div>
+  			<br>
+  			<div>
+  				<input type="text" name="" id="lovevalue" class="form-control text-center w-25 m-auto" readonly="readonly" placeholder="Love Percentage">
+  			</div>
+  		</div>
+  		<div class="card-footer">God Bless Your Relationship <br> Designed by A-J-G-S-M Kottayam 
+  			<br>Visitors: <label id="count" style="color: red;">0</label> </div>
+	</div>
+	</header>
+
+	<script>
+		var c=0;
+		// calculation function
+		function checklove()
+		{
+			var txtYname = document.getElementById('yname').value;
+			var  txtLname = document.getElementById('lname').value;
+
+			if(txtYname == ""){
+				alert("Please Enter Your Name");
+			}else if(txtYname.length <=2){
+				alert("Min Length Is 3");
+			}else if(!isNaN(txtYname)){
+				alert("Numbers Are Not Allowed");
+			}else if(txtLname == ""){
+				alert("Please Enter Your Name");
+			}else if(txtLname.length <=2){
+				alert("Min Length Is 3");
+			}else if(!isNaN(txtLname)){
+				alert("Numbers Are Not Allowed");
+			}else{
+				if(c==0){
+					var lovedata = Math.random()*100;
+					lovedata = Math.floor(lovedata);
+					document.getElementById('lovevalue').value = lovedata + "%";
+					document.getElementById('bbtn').innerHTML="Clear";
+					c=1;
+				}else{
+					c=0;
+					document.getElementById('lovevalue').value = "";
+					document.getElementById('yname').value = "";
+					document.getElementById('lname').value = "";
+					document.getElementById('bbtn').innerHTML="Click";
+
+			}
+
+			}
+				// var lovedata = Math.random()*100;
+				// lovedata = Math.floor(lovedata);
+				// document.getElementById('lovevalue').value = lovedata + "%";
+			}
+	</script>
+
+
+	<!-- script for counting -->
+	<script>
+		const countEl=document.getElementById('count');
+		updateVistCount();
+
+		// cmt-for counting purpose(countapi:SiteLink(https://countapi.xyz/))
+		function updateVistCount(){
+			fetch('https://api.countapi.xyz/update/love/143/?amount=1')
+			.then(res => res.json())
+			.then(res => 
+				{
+
+					countEl.innerHTML = res.value;
+				});
+		}
+	</script>
+	
+	
+</body>
+</html>
